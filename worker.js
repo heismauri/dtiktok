@@ -25,7 +25,7 @@ const objectValidator = (object) => {
     object.message = 'The URL field is required and cannot be left blank.';
     return object;
   }
-  // Check for valid tweet ID
+  // Check for valid tiktok ID
   if (!(/^https:\/\/www\.tiktok\.com\/@[^/]+\/video\/\d{8,}/.test(object.url))) {
     object.message = `The provided URL (${object.url}) is not valid.`;
     return object;
