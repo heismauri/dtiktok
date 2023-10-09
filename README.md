@@ -21,5 +21,5 @@ and can also be used on the [web app](https://dtiktok.heismauri.com).
   <img src=".github/readme-images/web-app.gif">
 </p>
 
-### Contributing
+## Contributing
 If you want to contribute to this project, you can open an issue or a pull request. I will be more than happy to review them.
