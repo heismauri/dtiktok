@@ -1,0 +1,41 @@
+{
+  "env": {
+    "jest/globals": true,
+    "worker": true
+  },
+  "extends": "airbnb-base",
+  "ignorePatterns": [
+    "dist/*.js"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "plugins": [
+    "jest"
+  ],
+  "rules": {
+    "arrow-body-style": "off",
+    "comma-dangle": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "tabWidth": 2
+      }
+    ],
+    "no-console": "warn",
+    "no-param-reassign": "off",
+    "no-restricted-globals": "off",
+    "quote-props": [
+      "error",
+      "consistent"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ]
+  }
+}
