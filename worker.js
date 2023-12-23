@@ -26,7 +26,7 @@ const objectValidator = (object) => {
     return object;
   }
   // Check for valid tiktok ID
-  if (!(/^https:\/\/www\.tiktok\.com\/@[^/]+\/video\/\d{8,}/.test(object.url))) {
+  if (!(/^https:\/\/www\.tiktok\.com\/@[^/]*\/(video|photo)\/\d{8,}/.test(object.url))) {
     object.message = `The provided URL (${object.url}) is not valid.`;
     return object;
   }
