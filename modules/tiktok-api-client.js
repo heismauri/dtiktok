@@ -8,14 +8,22 @@ const tiktokAPIClient = async (id, env) => {
   try {
     const tiktokEndpoint = new URL(env.ENDPOINT);
     tiktokEndpoint.search = new URLSearchParams({
+      'iid': '7318518857994389254',
+      'device_id': '7318517321748022790',
+      'channel': 'googleplay',
+      'app_name': 'musical_ly',
+      'version_code': '300904',
+      'device_platform': 'android',
+      'device_type': 'ASUS_Z01QD',
+      'os_version': '9',
       'aweme_id': id
     });
     const tiktokResponse = await fetch(tiktokEndpoint, {
       headers: {
         'Accept': 'application/json',
         'Connection': 'keep-alive',
-        'User-Agent': 'AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/107.0.5304.105 Mobile Safari/537.36 '
-        + 'com.ss.android.ugc.trill/494 Mozilla/5.0 (Linux; Android 12; 2112123G Build/SKQ1.211006.001; wv)'
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko)'
+        + 'Chrome/122.0.0.0 Mobile Safari/537.36'
       },
       signal: AbortSignal.timeout(10 * 1000)
     })
