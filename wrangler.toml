@@ -7,3 +7,6 @@ minify = true
 kv_namespaces = [
   { binding = "data", id = "17bef60b14ed4c02ad607ddd2aac18c4", preview_id = "d69ca07021724fdfb3d758c07c487ce7" }
 ]
+
+[vars]
+MAINTENANCE = "false"
