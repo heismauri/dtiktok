@@ -9,11 +9,15 @@ const jsonBuilder = (json) => {
       })
     };
   }
+  const mainVideo = json.video.play_addr.url_list[0];
+  const highestResolution = json.video?.bit_rate?.sort((a, b) => {
+    return b.play_addr.height - a.play_addr.height;
+  })[0]?.play_addr?.url_list[0];
   return {
     media: [
       {
         type: 'video',
-        link: json.video.bit_rate.sort((a, b) => b.play_addr.height - a.play_addr.height)[0].play_addr.url_list[0]
+        link: highestResolution || mainVideo
       }
     ]
   };
