@@ -78,7 +78,7 @@ const handlePostRequest = async (request, env) => {
     }
   }
   // Success
-  return jsonResponseBuilder(jsonBuilder(tiktokJSON, params.selector), { status: 200 });
+  return jsonResponseBuilder(jsonBuilder(tiktokJSON), { status: 200 });
 };
 
 export default {
