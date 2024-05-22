@@ -19,12 +19,7 @@ const tiktokAPIClient = async (id, env) => {
       'aweme_id': id
     });
     const tiktokResponse = await fetch(tiktokEndpoint, {
-      headers: {
-        'Accept': 'application/json',
-        'Connection': 'keep-alive',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko)'
-        + 'Chrome/122.0.0.0 Mobile Safari/537.36'
-      },
+      method: 'OPTIONS',
       signal: AbortSignal.timeout(10 * 1000)
     })
       .then((response) => response.text());
