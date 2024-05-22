@@ -10,3 +10,6 @@ kv_namespaces = [
 
 [vars]
 MAINTENANCE = "false"
+
+[placement]
+mode = "smart"
