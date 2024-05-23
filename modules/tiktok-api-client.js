@@ -8,17 +8,10 @@ const tiktokAPIClient = async (id, env) => {
   try {
     const tiktokEndpoint = new URL(env.ENDPOINT);
     tiktokEndpoint.search = new URLSearchParams({
-      'iid': '7318518857994389254',
-      'channel': 'googleplay',
-      'app_name': 'musical_ly',
-      'version_code': '300904',
+      'aweme_id': id,
+      'device_type': 'SM-S928B',
       'device_platform': 'android',
-      'os_version': '9',
-      'resolution': '1080*2400',
-      'dpi': 420,
-      'device_type': 'Pixel 7',
-      'device_brand': 'Google',
-      'aweme_id': id
+      'os_version': '15'
     });
     const tiktokResponse = await fetch(tiktokEndpoint, {
       method: 'OPTIONS',
