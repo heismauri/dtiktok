@@ -1,6 +1,6 @@
 {
   "name": "dtiktok",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "Download TikTok videos or photos without watermark",
   "type": "module",
   "module": "worker.js",
@@ -31,6 +31,6 @@
     "jest-environment-miniflare": "2.14.2",
     "miniflare": "3.20240512.0",
     "undici": "^5.28.2",
-    "wrangler": "3.57.1"
+    "wrangler": "3.57.2"
   }
 }

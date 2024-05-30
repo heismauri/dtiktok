@@ -8,7 +8,8 @@ const jsonResponseBuilder = (body, options = {}) => {
   return new Response(JSON.stringify(body), {
     ...options,
     headers: {
-      'Content-Type': 'application/json; charset=UTF-8'
+      'Content-Type': 'application/json; charset=UTF-8',
+      ...options.headers
     }
   });
 };
@@ -78,7 +79,7 @@ const handlePostRequest = async (request, env) => {
     }
   }
   // Success
-  return jsonResponseBuilder(jsonBuilder(tiktokJSON), { status: 200 });
+  return jsonResponseBuilder(jsonBuilder(tiktokJSON));
 };
 
 export default {
@@ -89,7 +90,7 @@ export default {
     return new Response(landingPage(), {
       headers: {
         'Content-Type': 'text/html; charset=UTF-8'
-      },
+      }
     });
   }
 };
