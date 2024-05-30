@@ -1,6 +1,5 @@
 import { shortcutURL, supportedVersions } from './modules/global-variables';
 import tiktokAPIClient from './modules/tiktok-api-client';
-import jsonBuilder from './modules/json-builder';
 import landingPage from './modules/landing-page';
 
 // Utilities methods, used for various things
@@ -79,7 +78,7 @@ const handlePostRequest = async (request, env) => {
     }
   }
   // Success
-  return jsonResponseBuilder(jsonBuilder(tiktokJSON));
+  return jsonResponseBuilder(tiktokJSON);
 };
 
 export default {
