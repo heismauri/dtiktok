@@ -16,16 +16,18 @@ const tiktokAPIClient = async (id, env) => {
     const tiktokResponse = await fetch(tiktokEndpoint, {
       method: 'OPTIONS',
       signal: AbortSignal.timeout(10 * 1000)
-    })
-      .then((response) => response.text());
-    if (!tiktokResponse) throw new Error('Blank');
-    if (!validJSON(tiktokResponse)) throw new Error('InvalidJSON');
+    });
+    const tiktokBody = await tiktokResponse.text();
+    tiktokLog = tiktokBody;
+    if (!tiktokResponse.ok) throw new Error('Bad fetch response');
+    if (!tiktokBody) throw new Error('Blank');
+    if (!validJSON(tiktokBody)) throw new Error('InvalidJSON');
 
-    const tiktokParsedResponse = JSON.parse(tiktokResponse);
-    const stiktokJson = tiktokParsedResponse.aweme_list.find((aweme) => aweme.aweme_id === id);
-    if (!stiktokJson) throw new Error('NotFound');
+    const tiktokParsedBody = JSON.parse(tiktokBody);
+    const tiktokDetail = tiktokParsedBody.aweme_list.find((aweme) => aweme.aweme_id === id);
+    if (!tiktokDetail) throw new Error('NotFound');
 
-    return stiktokJson;
+    return tiktokDetail;
   } catch (error) {
     return { error };
   }
