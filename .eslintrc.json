@@ -16,7 +16,10 @@
   "root": true,
   "rules": {
     "arrow-body-style": "off",
-    "comma-dangle": "off",
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
     "max-len": [
       "error",
       {
@@ -26,7 +29,6 @@
     ],
     "no-console": "warn",
     "no-param-reassign": "off",
-    "no-restricted-globals": "off",
     "quote-props": [
       "error",
       "consistent"
