@@ -10,7 +10,7 @@ const jsonBuilder = (json) => {
       media: json.image_post_info.images.map((image) => {
         return {
           type: 'photo',
-          link: image.display_image.url_list[1]
+          link: image.display_image.url_list[0]
         };
       })
     };
