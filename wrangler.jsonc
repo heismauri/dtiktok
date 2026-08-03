@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-07-31",
+  "kv_namespaces": [
+    {
+      "binding": "data",
+      "id": "17bef60b14ed4c02ad607ddd2aac18c4",
+      "preview_id": "d69ca07021724fdfb3d758c07c487ce7"
+    }
+  ],
+  "limits": {
+    "cpu_ms": 100
+  },
+  "main": "src/index.ts",
+  "minify": true,
+  "name": "dtiktok",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "MAINTENANCE": false
+  },
+  "workers_dev": false
+}
