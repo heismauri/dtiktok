@@ -4,7 +4,6 @@
   "description": "Download TikTok videos or photos without watermark",
   "private": true,
   "type": "module",
-  "module": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/heismauri/dtiktok.git"
@@ -15,22 +14,37 @@
     "url": "https://github.com/heismauri/dtiktok/issues"
   },
   "homepage": "https://dtiktok.heismauri.com",
+  "packageManager": "pnpm@11.18.0",
   "scripts": {
-    "deploy": "tsc && eslint . && vitest run && wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
+    "dev:vite": "vite",
+    "dev:worker": "wrangler dev --port 8787",
+    "dev": "pnpm run dev:worker & pnpm run dev:vite",
+    "build": "tsc -b app/tsconfig.json && vite build",
+    "lint": "eslint .",
+    "cf-typegen": "wrangler types",
     "test": "vitest",
-    "cf-typegen": "wrangler types"
+    "deploy": "pnpm run build && tsc && eslint . && vitest run && wrangler deploy"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "0.20.1",
     "@eslint/js": "10.0.1",
+    "@types/node": "26.1.2",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
     "eslint": "10.8.0",
     "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.3",
+    "globals": "17.8.0",
     "jiti": "2.7.0",
     "typescript": "6.0.3",
     "typescript-eslint": "8.65.0",
-    "vite-tsconfig-paths": "6.1.1",
+    "vite": "8.2.0",
     "vitest": "4.1.10",
     "wrangler": "4.118.0"
   }
