@@ -1,4 +1,3 @@
-import { landingPage } from "@api/landingPage";
 import { getVideo } from "@api/services/TikTok";
 import { shortcutURL, supportedVersions } from "@api/global-variables";
 
@@ -87,10 +86,6 @@ export default {
     if (request.method === "POST") {
       return handlePostRequest(request, env);
     }
-    return new Response(landingPage(), {
-      headers: {
-        "Content-Type": "text/html; charset=UTF-8"
-      }
-    });
+    return env.ASSETS.fetch(request);
   }
 } satisfies ExportedHandler<Env>;

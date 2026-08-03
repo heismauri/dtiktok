@@ -7,7 +7,7 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
-  globalIgnores(["worker-configuration.d.ts", "test/**", "public/**", "dist/**", "app/dist/**", ".wrangler/**"]),
+  globalIgnores(["worker-configuration.d.ts", "test/**", "dist/**", "app/dist/**", ".wrangler/**"]),
   js.configs.recommended,
   tseslint.configs.strict,
   tseslint.configs.stylistic,
