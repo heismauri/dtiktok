@@ -1,5 +1,5 @@
-import type { ApiErrorResponse, MediaResponse } from "@/types/Media";
-import type { KVErrorLogEntry, TikTokRehydrationData, TikTokWebItem } from "@/types/TikTokWebResponses";
+import type { ApiErrorResponse, MediaResponse } from "@api/types/Media";
+import type { KVErrorLogEntry, TikTokRehydrationData, TikTokWebItem } from "@api/types/TikTokWebResponses";
 
 const isPresent = (value: string | undefined): boolean => {
   return value !== undefined && value !== null && value !== "";

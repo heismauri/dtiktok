@@ -1,6 +1,6 @@
-import { landingPage } from "@/landingPage";
-import { getVideo } from "@/services/TikTok";
-import { shortcutURL, supportedVersions } from "@/shortcut";
+import { landingPage } from "@api/landingPage";
+import { getVideo } from "@api/services/TikTok";
+import { shortcutURL, supportedVersions } from "@api/global-variables";
 
 type FormValidation = { valid: true; id: string } | { valid: false; message: string };
 

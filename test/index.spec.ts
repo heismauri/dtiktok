@@ -1,8 +1,8 @@
-import worker from "@/index";
+import worker from "@api/index";
 import { env } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 
-import { latestVersion } from "@/shortcut";
+import { latestVersion } from "@api/global-variables";
 
 interface DTikTokResponse {
   media: { type: string; link: string }[];

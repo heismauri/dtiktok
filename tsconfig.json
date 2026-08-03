@@ -14,7 +14,8 @@
     "skipLibCheck": true,
     "types": ["./worker-configuration.d.ts"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@api/*": ["./src/*"],
+      "@app/*": ["./app/src/*"]
     }
   },
   "exclude": ["test"],

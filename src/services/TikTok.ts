@@ -1,5 +1,5 @@
-import type { ApiErrorResponse, MediaResponse } from "@/types/Media";
-import type { TikTokAwemeDetail, TikTokFeedResponse } from "@/types/TikTokResponses";
+import type { ApiErrorResponse, MediaResponse } from "@api/types/Media";
+import type { TikTokAwemeDetail, TikTokFeedResponse } from "@api/types/TikTokResponses";
 
 const validJSON = (str: string): boolean => {
   const firstChar = str.charAt(0);
