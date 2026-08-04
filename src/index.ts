@@ -1,4 +1,5 @@
-import { getVideo } from "@api/services/TikTok";
+import { getVideo as getVideoFromApp } from "@api/services/TikTok";
+import { getVideo as getVideoFromWeb } from "@api/services/TikTokWeb";
 import { shortcutURL, supportedVersions } from "@api/global-variables";
 
 type FormValidation = { valid: true; id: string } | { valid: false; message: string };
@@ -55,7 +56,10 @@ const handlePostRequest = async (request: Request, env: Env): Promise<Response> 
   if (!params.valid) {
     return jsonResponseBuilder({ error: params.message }, { status: 400 });
   }
-  const tiktokJSON = await getVideo(params.id, env);
+  let tiktokJSON = await getVideoFromApp(params.id, env);
+  if ("error" in tiktokJSON) {
+    tiktokJSON = await getVideoFromWeb(params.id, env);
+  }
   if ("error" in tiktokJSON) {
     switch (tiktokJSON.error.message) {
       case "NotFound":
