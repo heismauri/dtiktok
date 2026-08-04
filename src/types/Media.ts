@@ -1,7 +1,6 @@
 export interface MediaItem {
   type: "video" | "photo";
   link: string;
-  cookie?: string;
 }
 
 export interface MediaResponse {

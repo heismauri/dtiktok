@@ -1,37 +1,13 @@
 import type { ApiErrorResponse, MediaResponse } from "@api/types/Media";
 import type { KVErrorLogEntry, TikTokRehydrationData, TikTokWebItem } from "@api/types/TikTokWebResponses";
 
-const isPresent = (value: string | undefined): boolean => {
-  return value !== undefined && value !== null && value !== "";
-};
-
-const parseCookies = (cookieString: string | null): Record<string, string> => {
-  if (!cookieString) {
-    return {};
-  }
-  const cookieArray = cookieString.split(/,\s*/);
-  const cookies: Record<string, string> = {};
-  cookieArray.forEach((cookie) => {
-    const parts = cookie.split(/;\s*/);
-    const [name, value] = parts[0].split(/=(.*)/s);
-    if (isPresent(value)) {
-      cookies[name] = value;
-    }
-  });
-  return cookies;
-};
-
-const jsonBuilder = (json: TikTokWebItem, parsedCookies: Record<string, string>): MediaResponse => {
-  const cookie = Object.entries(parsedCookies)
-    .map(([key, value]) => `${key}=${value}`)
-    .join("; ");
+const jsonBuilder = (json: TikTokWebItem): MediaResponse => {
   if (json.imagePost) {
     return {
       media: json.imagePost.images.map((image) => {
         return {
           type: "photo",
-          link: image.imageURL.urlList[0],
-          cookie
+          link: image.imageURL.urlList[0]
         };
       })
     };
@@ -44,8 +20,7 @@ const jsonBuilder = (json: TikTokWebItem, parsedCookies: Record<string, string>)
     media: [
       {
         type: "video",
-        link: highestResolution || mainVideo,
-        cookie
+        link: highestResolution || mainVideo
       }
     ]
   };
@@ -62,7 +37,6 @@ const getVideo = async (id: string, env: Env): Promise<MediaResponse | ApiErrorR
       },
       signal: AbortSignal.timeout(10 * 1000)
     });
-    const tiktokCookies = ttResponse.headers.get("set-cookie");
     const tiktokHTML = await ttResponse.text();
     tiktokLog = tiktokHTML;
     let singleTikTok: TikTokWebItem;
@@ -76,7 +50,7 @@ const getVideo = async (id: string, env: Env): Promise<MediaResponse | ApiErrorR
     } catch (error) {
       throw new Error("NotFound", { cause: error });
     }
-    return jsonBuilder(singleTikTok, parseCookies(tiktokCookies));
+    return jsonBuilder(singleTikTok);
   } catch (error) {
     const typedError = error as Error;
     if (!["NotFound"].includes(typedError.message)) {
