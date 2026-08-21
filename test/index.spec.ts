@@ -17,9 +17,13 @@ const buildForm = (url: string): FormData => {
   return form;
 };
 
+let dispatchCount = 0;
+
 const postForm = async (url: string): Promise<DTikTokResponse> => {
+  dispatchCount += 1;
   const request = new IncomingRequest("https://dtiktok.example.com", {
     method: "POST",
+    headers: { "CF-Connecting-IP": `203.0.113.${dispatchCount}` },
     body: buildForm(url)
   });
   const response = await worker.fetch(request, env);
