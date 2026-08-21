@@ -52,6 +52,14 @@ const handlePostRequest = async (request: Request, env: Env): Promise<Response> 
       { status: 503 }
     );
   }
+  const clientIP = request.headers.get("CF-Connecting-IP") ?? "unknown";
+  const { success } = await env.RATE_LIMITER.limit({ key: clientIP });
+  if (!success) {
+    return jsonResponseBuilder(
+      { error: "You are sending too many requests. Please wait a moment and try again." },
+      { status: 429 }
+    );
+  }
   const params = await formToObject(request);
   if (!params.valid) {
     return jsonResponseBuilder({ error: params.message }, { status: 400 });
